@@ -8,9 +8,10 @@ Safety Circles is a web-based personal safety application that helps users share
 
 ### Instructions to run the app
 1. Install Python
-2. Run `pip install -r requirements.txt`
+2. Run `pip install -r backend/requirements.txt`
 3. Modify backend/config.py if you need to
 4. Run `py backend/app.py`
+5. View the app at `127.0.0.1:5000` (5000 may be different if you changed config.py)
 
 ### Technology Stack
 

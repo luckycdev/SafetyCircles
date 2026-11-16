@@ -1,0 +1,4 @@
+name,city,lat,lng,is_user
+Vincent,St. Louis,38.627, -90.1994,true
+Jessica,Kirkwood,38.5834,-90.4068,false
+Victoria,Clayton,38.6489,-90.3301,false

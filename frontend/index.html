@@ -15,10 +15,58 @@
   <body>
     <div id="map"></div>
 
+    <div class="circle-selector">
+      <label for="circle-select">Family</label>
+      <select id="circle-select">
+        <option value="family">Family</option>
+        <option value="friends">Friends</option>
+      </select>
+    </div>
+
     <div class="info">
       <strong id="user-name"></strong>
       <p id="user-city"></p>
       <p id="user-circle"></p>
+    </div>
+
+    <button id="sos-button" class="sos-button" type="button" aria-label="Emergency SOS">
+      SOS
+    </button>
+
+    <div id="sos-panel" class="sos-panel hidden" role="dialog"
+         aria-labelledby="sos-title" aria-modal="true">
+      <div class="sos-header">
+        <h2 id="sos-title">Emergency SOS</h2>
+        <button id="close-sos" class="close-panel" type="button"
+                aria-label="Close SOS panel">&times;</button>
+      </div>
+
+      <div id="sos-confirmation">
+        <p>Are you sure you want to activate Emergency SOS?</p>
+        <p class="sos-note">This demo will not send an actual emergency alert.</p>
+        <div class="sos-actions">
+          <button id="cancel-sos" type="button" class="secondary-button">
+            Cancel
+          </button>
+          <button id="confirm-sos" type="button" class="danger-button">
+            Activate SOS
+          </button>
+        </div>
+      </div>
+
+      <div id="sos-active" class="hidden">
+        <h3>EMERGENCY SOS ACTIVE</h3>
+        <p>Emergency mode is active on this device.</p>
+        <div class="sos-details">
+          <p><strong>Current location:</strong> <span id="sos-location">Getting location...</span></p>
+          <p><strong>GPS accuracy:</strong> <span id="sos-accuracy">Unavailable</span></p>
+          <p><strong>Battery level:</strong> <span id="sos-battery">Unavailable</span></p>
+        </div>
+        <p class="sos-note">No alert has been sent to your circle or emergency services.</p>
+        <button id="stop-sos" type="button" class="secondary-button">
+          Deactivate SOS
+        </button>
+      </div>
     </div>
 
     <div class="tabs">
@@ -28,7 +76,6 @@
     </div>
 
     <div id="places-panel" class="floating-panel hidden"></div>
-
     <div id="settings-panel" class="floating-panel hidden"></div>
 
     <script
@@ -39,4 +86,3 @@
     <script src="/index.js"></script>
   </body>
 </html>
-

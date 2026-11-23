@@ -1,0 +1,62 @@
+CREATE TABLE IF NOT EXISTS User (
+  userId INTEGER PRIMARY KEY AUTOINCREMENT,
+  firstName VARCHAR(50) NOT NULL,
+  lastName VARCHAR(50) NOT NULL,
+  email VARCHAR(50) NOT NULL UNIQUE,
+  phoneNumber VARCHAR(50),
+  passwordHash VARCHAR(255) NOT NULL,
+  lastLatitude DECIMAL(10,7),
+  lastLongitude DECIMAL(10,7),
+  lastUpdated DATETIME,
+  pauseSharing INT NOT NULL DEFAULT 0,
+  arrivalNotifications INT NOT NULL DEFAULT 1,
+  lowBatteryNotifications INT NOT NULL DEFAULT 1,
+  completedDriveNotifications INT NOT NULL DEFAULT 1,
+  severeWeatherNotifications INT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE IF NOT EXISTS Circle (
+  circleId INTEGER PRIMARY KEY AUTOINCREMENT,
+  name VARCHAR(50) NOT NULL,
+  ownerId INTEGER NOT NULL REFERENCES User(userId)
+);
+
+CREATE TABLE IF NOT EXISTS CircleMembers (
+  circleId INTEGER NOT NULL REFERENCES Circle(circleId),
+  userId INTEGER NOT NULL REFERENCES User(userId),
+  PRIMARY KEY (circleId, userId)
+);
+
+CREATE TABLE IF NOT EXISTS Places (
+  placeId INTEGER PRIMARY KEY AUTOINCREMENT,
+  userId INTEGER NOT NULL REFERENCES User(userId),
+  circleId INTEGER NOT NULL REFERENCES Circle(circleId),
+  name VARCHAR(50) NOT NULL,
+  address VARCHAR(50),
+  latitude DECIMAL(10,7) NOT NULL,
+  longitude DECIMAL(10,7) NOT NULL,
+  radius DECIMAL(10,5) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Alerts (
+  alertId INTEGER PRIMARY KEY AUTOINCREMENT,
+  circleId INTEGER NOT NULL REFERENCES Circle(circleId),
+  userId INTEGER NOT NULL REFERENCES User(userId),
+  name VARCHAR(50) NOT NULL,
+  latitude DECIMAL(10,7),
+  longitude DECIMAL(10,7),
+  address VARCHAR(50),
+  time DATETIME NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Routes (
+  routeId INTEGER PRIMARY KEY AUTOINCREMENT,
+  userId INTEGER NOT NULL REFERENCES User(userId),
+  startingLat DECIMAL(10,7) NOT NULL,
+  startingLong DECIMAL(10,7) NOT NULL,
+  endLat DECIMAL(10,7) NOT NULL,
+  endLong DECIMAL(10,7) NOT NULL,
+  secondsTaken INT,
+  distanceMiles DECIMAL(8,3),
+  topSpeed DECIMAL(5,3)
+);

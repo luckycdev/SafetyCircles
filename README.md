@@ -13,6 +13,8 @@ Safety Circles is a web-based personal safety application that helps users share
 4. Run `py backend/app.py`
 5. View the app at `127.0.0.1:5000` (5000 may be different if you changed config.py)
 
+The first run creates `backend/data/safetycircles.db` with an example account (john@example.com, password `password`). There is no login page yet, so you are signed in as that account automatically. John's location comes from your browser, so allow location access. Delete the .db file to reset it.
+
 ### Technology Stack
 
 Backend: Python

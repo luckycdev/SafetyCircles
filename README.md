@@ -13,7 +13,7 @@ Safety Circles is a web-based personal safety application that helps users share
 4. Run `py backend/app.py`
 5. View the app at `127.0.0.1:5000` (5000 may be different if you changed config.py)
 
-The first run creates `backend/data/safetycircles.db` with an example account (john@example.com, password `password`). There is no login page yet, so you are signed in as that account automatically. John's location comes from your browser, so allow location access. Delete the .db file to reset it.
+The first run creates `backend/data/safetycircles.db` with an example account (john@example.com, password `password`). There is no login page yet, so you are signed in as that account automatically. John's location, speed and battery come from your browser, so allow location access. The example people (Vincent, Jessica, Victoria) don't move, so Settings has demo buttons that move them to try the notifications. If you change `schema.sql`, delete the .db file so it is rebuilt. Delete the .db file to reset it.
 
 ### Technology Stack
 

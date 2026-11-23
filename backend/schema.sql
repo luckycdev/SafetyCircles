@@ -8,6 +8,8 @@ CREATE TABLE IF NOT EXISTS User (
   lastLatitude DECIMAL(10,7),
   lastLongitude DECIMAL(10,7),
   lastUpdated DATETIME,
+  lastSpeed DECIMAL(6,3),
+  batteryLevel INT,
   pauseSharing INT NOT NULL DEFAULT 0,
   arrivalNotifications INT NOT NULL DEFAULT 1,
   lowBatteryNotifications INT NOT NULL DEFAULT 1,
@@ -32,7 +34,7 @@ CREATE TABLE IF NOT EXISTS Places (
   userId INTEGER NOT NULL REFERENCES User(userId),
   circleId INTEGER NOT NULL REFERENCES Circle(circleId),
   name VARCHAR(50) NOT NULL,
-  address VARCHAR(50),
+  address VARCHAR(255),
   latitude DECIMAL(10,7) NOT NULL,
   longitude DECIMAL(10,7) NOT NULL,
   radius DECIMAL(10,5) NOT NULL
@@ -45,8 +47,9 @@ CREATE TABLE IF NOT EXISTS Alerts (
   name VARCHAR(50) NOT NULL,
   latitude DECIMAL(10,7),
   longitude DECIMAL(10,7),
-  address VARCHAR(50),
-  time DATETIME NOT NULL
+  address VARCHAR(255),
+  time DATETIME NOT NULL,
+  resolved INT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS Routes (
@@ -58,5 +61,19 @@ CREATE TABLE IF NOT EXISTS Routes (
   endLong DECIMAL(10,7) NOT NULL,
   secondsTaken INT,
   distanceMiles DECIMAL(8,3),
-  topSpeed DECIMAL(5,3)
+  topSpeed DECIMAL(6,3),
+  startTime DATETIME NOT NULL,
+  endTime DATETIME NOT NULL,
+  lastMoving DATETIME NOT NULL,
+  finished INT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS Notifications (
+  notificationId INTEGER PRIMARY KEY AUTOINCREMENT,
+  userId INTEGER NOT NULL REFERENCES User(userId),
+  type VARCHAR(20) NOT NULL,
+  message VARCHAR(255) NOT NULL,
+  time DATETIME NOT NULL,
+  uniqueKey VARCHAR(255),
+  UNIQUE (userId, uniqueKey)
 );

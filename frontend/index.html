@@ -74,6 +74,16 @@
 
     <div id="places-panel" class="floating-panel hidden"></div>
     <div id="settings-panel" class="floating-panel hidden"></div>
+    <div id="account-panel" class="floating-panel hidden"></div>
+    <div id="notifications-panel" class="floating-panel hidden"></div>
+    <div id="routes-panel" class="floating-panel hidden"></div>
+
+    <div id="pick-hint" class="pick-hint hidden">
+      Click the map to choose the spot
+      <button type="button" class="small-button" data-action="cancel-pick">Cancel</button>
+    </div>
+
+    <div id="toasts"></div>
 
     <script
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -81,5 +91,6 @@
       crossorigin=""
     ></script>
     <script src="/index.js"></script>
+    <script src="/panels.js"></script>
   </body>
 </html>

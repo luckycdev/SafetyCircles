@@ -4,7 +4,7 @@
 </div>
 
 <div class="settings-body">
-  <button type="button" class="settings-button">Account Settings</button>
+  <button type="button" class="settings-button" data-open="account">Account Settings</button>
 
   <div class="setting-row">
     <span>Pause location sharing</span>
@@ -14,7 +14,7 @@
     </label>
   </div>
 
-  <a href="#" class="text-link">Notifications</a>
+  <a href="#" class="text-link" data-open="notifications">Notifications</a>
 
   <div class="setting-row">
     <span>Arrival/Departure Notifications</span>
@@ -46,5 +46,14 @@
       <input type="checkbox" data-setting="severeWeatherNotifications" />
       <span class="slider"></span>
     </label>
+  </div>
+
+  <div class="demo-tools">
+    <p class="muted">Demo tools: move the example people to try the notifications.</p>
+    <button type="button" class="small-button" data-demo="jessica-arrive">Jessica arrives at a place</button>
+    <button type="button" class="small-button" data-demo="jessica-leave">Jessica leaves</button>
+    <button type="button" class="small-button" data-demo="vincent-drive">Vincent takes a drive</button>
+    <button type="button" class="small-button" data-demo="victoria-battery">Victoria's battery drops</button>
+    <p id="demo-status" class="muted"></p>
   </div>
 </div>

@@ -16,17 +16,14 @@
     <div id="map"></div>
 
     <div class="circle-selector">
-      <label for="circle-select">Family</label>
-      <select id="circle-select">
-        <option value="family">Family</option>
-        <option value="friends">Friends</option>
-      </select>
+      <label for="circle-select">Circle</label>
+      <select id="circle-select"></select>
     </div>
 
     <div class="info">
       <strong id="user-name"></strong>
-      <p id="user-city"></p>
       <p id="user-circle"></p>
+      <p id="location-status"></p>
     </div>
 
     <button id="sos-button" class="sos-button" type="button" aria-label="Emergency SOS">
@@ -43,7 +40,7 @@
 
       <div id="sos-confirmation">
         <p>Are you sure you want to activate Emergency SOS?</p>
-        <p class="sos-note">This demo will not send an actual emergency alert.</p>
+        <p class="sos-note">This sends an alert with your location to the selected circle. Emergency services are not contacted.</p>
         <div class="sos-actions">
           <button id="cancel-sos" type="button" class="secondary-button">
             Cancel
@@ -62,7 +59,7 @@
           <p><strong>GPS accuracy:</strong> <span id="sos-accuracy">Unavailable</span></p>
           <p><strong>Battery level:</strong> <span id="sos-battery">Unavailable</span></p>
         </div>
-        <p class="sos-note">No alert has been sent to your circle or emergency services.</p>
+        <p id="sos-status" class="sos-note"></p>
         <button id="stop-sos" type="button" class="secondary-button">
           Deactivate SOS
         </button>
